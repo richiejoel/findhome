@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">FindHome</string>
+
+    <!-- Login -->
+    <string name="login_title">FindHome</string>
+    <string name="login_txt_welcome">Welcome</string>
+    <string name="login_txt_description">Login for enjoy findhome</string>
+    <string name="login_edt_email">Email</string>
+    <string name="login_edt_password">Password</string>
+    <string name="login_btn">LOGIN</string>
+    <string name="login_create_account">Create new account</string>
+    <string name="login_forgot_password">Forgot password?</string>
+
+</resources>
