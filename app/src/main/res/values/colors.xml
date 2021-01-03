@@ -8,9 +8,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="colorPrimary">#46D0D9</color>
-    <color name="colorAccent">#13497B</color>
-    <color name="colorBackground">#FFFFFFFF</color>
+    <color name="sky_primary">#46D0D9</color>
+    <color name="blue_accent">#13497B</color>
     <color name="colorHint">#C4C4C4</color>
+    <color name="colorBlack">#FF000000</color>
+    <color name="colorWhite">#FFFFFFFF</color>
+    <color name="colorHintTxt">#7E7D7D</color>
+    <color name="colorBackground">#F8FBFF</color>
 
 </resources>
