@@ -15,5 +15,14 @@
     <string name="login_forgot_password">Forgot password?</string>
 
 
+    <string name="title_activity_dashboard">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_chat">Chat</string>
+
+
+    <!-- Home -->
+    <string name="home_txt_city">Los Angeles, CA</string>
 
 </resources>
