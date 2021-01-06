@@ -18,6 +18,9 @@ class DashboardActivity : AppCompatActivity() {
         setContentView(R.layout.activity_dashboard)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
+        //Hide action bar
+        supportActionBar?.hide()
+
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.

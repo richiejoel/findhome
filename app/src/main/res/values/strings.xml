@@ -24,5 +24,14 @@
 
     <!-- Home -->
     <string name="home_txt_city">Los Angeles, CA</string>
+    <string name="home_txt_username">Hello, Joel</string>
+    <string name="home_txt_subtitle">Start looking for your house</string>
+    <string name="home_edt_search">What are you looking for?</string>
+    <!-- Filter -->
+    <string name="home_filter_home">Home</string>
+    <string name="home_filter_condominium">Condominium</string>
+    <string name="home_filter_keys">Keys</string>
+    <string name="home_filter_percent">Percent</string>
+
 
 </resources>
