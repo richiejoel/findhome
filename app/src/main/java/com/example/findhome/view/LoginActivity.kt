@@ -1,4 +1,4 @@
-package com.example.findhome
+package com.example.findhome.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -24,14 +24,14 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(view: View?) {
         when(view?.id){
-            binding.btnLogin.id -> loadDashboard()
+            binding.btnLogin.id -> mLoadDashboard()
             else -> {
                 Log.i("ERROR", "Error not controlled")
             }
         }
     }
 
-    private fun loadDashboard() {
+    private fun mLoadDashboard() {
         val goDashboard:Intent = Intent(this, DashboardActivity::class.java)
         startActivity(goDashboard)
         finish()

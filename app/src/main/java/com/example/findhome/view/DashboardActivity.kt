@@ -1,4 +1,4 @@
-package com.example.findhome
+package com.example.findhome.view
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.findhome.R
 import com.example.findhome.databinding.ActivityDashboardBinding
 
 class DashboardActivity : AppCompatActivity() {
@@ -26,7 +27,7 @@ class DashboardActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_favorites, R.id.navigation_ubication, R.id.navigation_chat
+                    R.id.navigation_home, R.id.navigation_favorites, R.id.navigation_ubication, R.id.navigation_chat
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

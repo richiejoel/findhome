@@ -1,4 +1,4 @@
-package com.example.findhome.view
+package com.example.findhome.view.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
