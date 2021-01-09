@@ -1,4 +1,4 @@
-package com.example.findhome.view
+package com.heavy.findhome.view
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView

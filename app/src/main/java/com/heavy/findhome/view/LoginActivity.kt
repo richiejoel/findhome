@@ -1,4 +1,4 @@
-package com.example.findhome.view
+package com.heavy.findhome.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

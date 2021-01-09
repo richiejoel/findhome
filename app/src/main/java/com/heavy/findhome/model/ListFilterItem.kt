@@ -1,4 +1,4 @@
-package com.example.findhome.model
+package com.heavy.findhome.model
 
 import android.graphics.drawable.Drawable
 

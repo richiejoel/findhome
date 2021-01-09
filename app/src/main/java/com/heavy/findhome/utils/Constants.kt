@@ -1,4 +1,4 @@
-package com.example.findhome.utils
+package com.heavy.findhome.utils
 
 class Constants {
     val MENU_HOME:String = "Home"

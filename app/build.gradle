@@ -13,7 +13,7 @@ android {
 
 
     defaultConfig {
-        applicationId "com.example.findhome"
+        applicationId "com.heavy.findhome"
         minSdkVersion 22
         targetSdkVersion 29
         versionCode 1

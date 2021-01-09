@@ -10,9 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FindHome">
         <activity
-            android:name=".view.DashboardActivity"
+            android:name="com.heavy.findhome.view.DashboardActivity"
             android:label="@string/title_activity_dashboard"></activity>
-        <activity android:name=".view.LoginActivity">
+        <activity android:name="com.heavy.findhome.view.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

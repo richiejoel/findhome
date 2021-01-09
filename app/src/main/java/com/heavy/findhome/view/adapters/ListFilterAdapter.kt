@@ -1,12 +1,12 @@
-package com.example.findhome.view.adapters
+package com.heavy.findhome.view.adapters
 
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.findhome.model.ListFilterItem
+import com.heavy.findhome.model.ListFilterItem
 
 class ListFilterAdapter(private val listFilter:List<ListFilterItem>) : RecyclerView.Adapter<ListFilterAdapter.ListFilterViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListFilterAdapter.ListFilterViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListFilterViewHolder {
         TODO("Not yet implemented")
     }
 
@@ -14,7 +14,7 @@ class ListFilterAdapter(private val listFilter:List<ListFilterItem>) : RecyclerV
         TODO("Not yet implemented")
     }
 
-    override fun onBindViewHolder(holder: ListFilterAdapter.ListFilterViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ListFilterViewHolder, position: Int) {
         TODO("Not yet implemented")
     }
 
