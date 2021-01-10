@@ -2,22 +2,24 @@ package com.heavy.findhome.model
 
 import android.graphics.drawable.Drawable
 
-class ListFilterItem {
+class ListFilterItem constructor(pTitleFilter: String?, pIconFilter: Drawable?, pSelected:Boolean?) {
 
-    private var titleFilter:String?
-        get() {
-            return this?.titleFilter
-        }
-        set(titleFilter:String?) {
-            this.titleFilter = titleFilter
+    var titleFilter: String? = pTitleFilter
+        get() = field
+        set(value) {
+            field = value
         }
 
-    private var iconFilter:Drawable?
-        get() {
-           return this?.iconFilter
+    var iconFilter: Drawable? = pIconFilter
+        get() = field
+        set(value) {
+            field = value
         }
-        set(iconFilter:Drawable?) {
-            this?.iconFilter = iconFilter
+
+    var selected: Boolean? = pSelected
+        get() = field
+        set(value) {
+            field = value
         }
 
 }

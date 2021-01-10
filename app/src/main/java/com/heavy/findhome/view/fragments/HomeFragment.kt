@@ -4,18 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.findhome.R
 import com.example.findhome.databinding.FragmentHomeBinding
+import com.heavy.findhome.model.ListFilterItem
+import com.heavy.findhome.view.adapters.ListFilterAdapter
 
 class HomeFragment : Fragment() {
 
     private var _binding:FragmentHomeBinding? = null;
     private val binding get() = _binding!!
+
+    private lateinit var listFilter:ArrayList<ListFilterItem>
+    private lateinit var obRecyclerView:RecyclerView
+    private lateinit var obAdapter:ListFilterAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,10 +36,35 @@ class HomeFragment : Fragment() {
             textView.text = it
         })*/
         mChangeColorStatusBar()
+        mLoadDataListFilter()
+        mLoadRecycler()
+
         return view
     }
 
     private fun mChangeColorStatusBar(){
         activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(),R.color.colorBackground)
+    }
+
+    private fun mLoadDataListFilter(){
+        listFilter = ArrayList()
+        listFilter.add(ListFilterItem("Home", resources?.getDrawable(R.drawable.ic_filter_home, context?.theme), true))
+        listFilter.add(ListFilterItem("Condominium", resources?.getDrawable(R.drawable.ic_filter_hotel, context?.theme), false))
+        listFilter.add(ListFilterItem("Keys", resources?.getDrawable(R.drawable.ic_filter_key, context?.theme), false))
+        listFilter.add(ListFilterItem("Percent", resources?.getDrawable(R.drawable.ic_filter_percent, context?.theme), false))
+
+    }
+
+    private fun mLoadRecycler(){
+        obRecyclerView = binding.recyclerListFilters
+        obRecyclerView.setHasFixedSize(true)
+        val mLayoutManager = LinearLayoutManager(context)
+        mLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
+        obRecyclerView.layoutManager =mLayoutManager
+        obAdapter = ListFilterAdapter(listFilter, requireContext())
+        obRecyclerView.adapter = obAdapter
+
+
+
     }
 }

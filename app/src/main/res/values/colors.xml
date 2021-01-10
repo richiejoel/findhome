@@ -19,6 +19,8 @@
     <color name="colorBackground">#F8FBFF</color>
     <color name="colorMap">#13497B</color>
     <color name="colorArrow">#143656</color>
+    <color name="colorFilterNoSelected">#D3DBE2</color>
+
 
 
 
