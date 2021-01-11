@@ -7,8 +7,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.findhome.R
-import com.example.findhome.databinding.ActivityDashboardBinding
+import com.heavy.findhome.R
+import com.heavy.findhome.databinding.ActivityDashboardBinding
 
 class DashboardActivity : AppCompatActivity() {
 

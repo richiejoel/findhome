@@ -48,7 +48,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 />
 
-            <com.airbnb.lottie.LottieAnimationView
+            <!--<com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animationFast"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:lottie_rawRes="@raw/eye_animation" />
-
+                -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.findhome.R
-import com.example.findhome.databinding.FragmentHomeBinding
+import com.heavy.findhome.R
+import com.heavy.findhome.databinding.FragmentHomeBinding
 import com.heavy.findhome.model.ListFilterItem
 import com.heavy.findhome.view.adapters.ListFilterAdapter
 
@@ -64,7 +65,11 @@ class HomeFragment : Fragment() {
         obAdapter = ListFilterAdapter(listFilter, requireContext())
         obRecyclerView.adapter = obAdapter
 
+    }
 
-
+    override fun onResume() {
+        super.onResume()
+        //Hide bottom navigation bar moves up on keyboard
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
     }
 }

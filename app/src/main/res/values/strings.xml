@@ -4,6 +4,9 @@
     <!-- Common -->
     <string name="ui_required">Required</string>
 
+    <!-- Splash -->
+    <string name="splash_title">FindHome</string>
+
     <!-- Login -->
     <string name="login_title">FindHome</string>
     <string name="login_txt_welcome">Welcome</string>

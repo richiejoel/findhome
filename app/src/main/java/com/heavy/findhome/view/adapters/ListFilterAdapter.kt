@@ -8,8 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import com.example.findhome.R
-import com.example.findhome.databinding.ListFiltersHomeBinding
+import com.heavy.findhome.R
+import com.heavy.findhome.databinding.ListFiltersHomeBinding
 import com.heavy.findhome.model.ListFilterItem
 
 class ListFilterAdapter(private val listFilter: ArrayList<ListFilterItem>, private val ctx: Context) : RecyclerView.Adapter<ListFilterAdapter.ListFilterViewHolder>() {
