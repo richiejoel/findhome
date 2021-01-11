@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.WindowManager
+import androidx.core.content.ContextCompat
+import com.heavy.findhome.R
 import com.heavy.findhome.databinding.ActivitySplashScreenBinding
 
 class SplashScreenActivity : AppCompatActivity() {
@@ -21,6 +23,10 @@ class SplashScreenActivity : AppCompatActivity() {
 
         //Hide action bar
         supportActionBar?.hide()
+    }
+
+    private fun mChangeColorStatusBar(){
+        window?.statusBarColor = ContextCompat.getColor(applicationContext, R.color.colorWhite)
     }
 
     private val mRunnable = Runnable {

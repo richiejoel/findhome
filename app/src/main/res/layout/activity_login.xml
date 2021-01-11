@@ -127,6 +127,7 @@
                         app:helperText="@string/ui_required"
                         app:endIconMode="custom"
                         app:endIconDrawable="@drawable/ic_subtract"
+                        app:endIconTint="@color/color_icon_end"
                         app:endIconContentDescription="hi"
                         >
                         <com.google.android.material.textfield.TextInputEditText

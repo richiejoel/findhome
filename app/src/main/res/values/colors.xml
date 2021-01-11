@@ -21,12 +21,13 @@
     <color name="colorArrow">#143656</color>
     <color name="colorFilterNoSelected">#D3DBE2</color>
 
-
-
-
     <!-- Menu -->
     <color name="color_icon_selected">#46D0D9</color>
     <color name="color_icon_default">#E5EBF1</color>
+
+    <!-- Icons Inputs -->
+    <color name="color_icon_end">#60D9E1</color>
+
 
 
 </resources>
