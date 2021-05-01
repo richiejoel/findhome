@@ -39,7 +39,7 @@ class ApartmentRecommendAdapter(private val listRentApartment: ArrayList<RentApa
             binding.numBathroom.text = apartement.numberBathroom.toString()
             binding.numBedroom.text = apartement.numberBedroom.toString()
             binding.numBell.text = apartement.numberBell.toString()
-            binding.amountRent.text = apartement.amount.toString()
+            binding.amountRent.text = "$" + apartement.amount.toString() + " USD"
         }
 
         override fun onClick(view: View?) {
