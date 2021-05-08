@@ -1,5 +1,6 @@
 package com.heavy.findhome.view.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,7 +11,8 @@ import com.heavy.findhome.R
 import com.heavy.findhome.databinding.ListSearchHomeBinding
 import com.heavy.findhome.model.RentAparment
 
-class ApartmentRecommendAdapter(private val listRentApartment: ArrayList<RentAparment>, private val ctx:Context ) : RecyclerView.Adapter<ApartmentRecommendAdapter.ApartementRecommendHolder>() {
+
+class ApartmentRecommendAdapter(private val listRentApartment: ArrayList<RentAparment>, private val ctx: Context) : RecyclerView.Adapter<ApartmentRecommendAdapter.ApartementRecommendHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ApartementRecommendHolder {
         val layoutInflater: LayoutInflater = LayoutInflater.from(parent.context)
@@ -31,7 +33,7 @@ class ApartmentRecommendAdapter(private val listRentApartment: ArrayList<RentApa
         lateinit var gobContext: Context
         lateinit var gobApartementRent:RentAparment
 
-        fun bind(apartement: RentAparment, ctx:Context){
+        fun bind(apartement: RentAparment, ctx: Context){
             gobContext = ctx
             gobApartementRent =  apartement
             binding.titleHome.text = apartement.nameAparment
@@ -40,10 +42,27 @@ class ApartmentRecommendAdapter(private val listRentApartment: ArrayList<RentApa
             binding.numBedroom.text = apartement.numberBedroom.toString()
             binding.numBell.text = apartement.numberBell.toString()
             binding.amountRent.text = "$" + apartement.amount.toString() + " USD"
+            binding.cardViewSearch.setOnClickListener(this)
+            binding.stackLike.setOnClickListener(this)
+
         }
 
         override fun onClick(view: View?) {
-            Log.i("INFO", "Error not controlled")
+            when(view?.id){
+                binding.stackLike.id -> mDoLike()
+                binding.cardViewSearch.id ->  Log.i("INFO", "Method click")
+                else -> {
+                    Log.i("ERROR", "Error not controlled")
+                }
+            }
+        }
+
+        @SuppressLint("ResourceAsColor")
+        fun mDoLike(){
+            Log.i("INFO", "Color")
+           binding.imgLike.drawable.setTint(R.color.colorLike)
+
+
         }
 
     }

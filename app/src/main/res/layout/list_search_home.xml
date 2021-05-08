@@ -72,6 +72,7 @@
             android:elevation="6dp"
             >
             <ImageView
+                android:id="@+id/imgLike"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_like"
@@ -131,25 +132,26 @@
                     app:layout_constraintBottom_toBottomOf="@+id/imgProfileLessor"
                     />
 
-                <com.willy.ratingbar.ScaleRatingBar
+                <com.willy.ratingbar.RotationRatingBar
                     android:id="@+id/houseRatingBar"
-                    android:layout_width="120dp"
+                    android:layout_width="130dp"
                     android:layout_height="20dp"
                     app:srb_numStars="5"
                     app:srb_minimumStars="1"
                     app:srb_rating="2"
-                    app:srb_stepSize="0.7"
+                    app:srb_stepSize="0.4"
                     app:srb_isIndicator="false"
                     app:srb_clickable="true"
                     app:srb_scrollable="true"
-                    app:srb_starWidth="50dp"
-                    app:srb_starHeight="50dp"
+                    app:srb_starWidth="40dp"
+                    app:srb_starHeight="40dp"
                     app:srb_clearRatingEnabled="true"
                     app:srb_drawableEmpty="@drawable/ic_star_rate_24"
+                    app:srb_drawableFilled="@drawable/ic_star_rate_24"
                     app:layout_constraintTop_toBottomOf="@id/imgProfileLessor"
                     app:layout_constraintStart_toStartOf="@id/imgProfileLessor"
-
                     />
+
 
                 <TextView
                     android:layout_width="wrap_content"
