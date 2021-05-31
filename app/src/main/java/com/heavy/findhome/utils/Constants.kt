@@ -1,9 +1,14 @@
 package com.heavy.findhome.utils
 
-class Constants {
-    val MENU_HOME:String = "Home"
-    val MENU_CONDOMINIUM:String = "Condominium"
-    val MENU_KEYS:String = "Keys"
-    val MENU_OFFERS:String = "Offers"
+object Constants {
+
+    //DB
+    const val USER_COLLECTION = "users";
+
+    //UI
+    const val MENU_HOME:String = "Home"
+    const val MENU_CONDOMINIUM:String = "Condominium"
+    const val MENU_KEYS:String = "Keys"
+    const val MENU_OFFERS:String = "Offers"
 
 }

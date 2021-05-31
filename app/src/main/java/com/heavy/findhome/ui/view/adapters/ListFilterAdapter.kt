@@ -1,4 +1,4 @@
-package com.heavy.findhome.view.adapters
+package com.heavy.findhome.ui.view.adapters
 
 import android.content.Context
 import android.os.Build
@@ -10,7 +10,7 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.heavy.findhome.R
 import com.heavy.findhome.databinding.ListFiltersHomeBinding
-import com.heavy.findhome.model.ListFilterItem
+import com.heavy.findhome.data.model.ListFilterItem
 
 class ListFilterAdapter(private val listFilter: ArrayList<ListFilterItem>, private val ctx: Context) : RecyclerView.Adapter<ListFilterAdapter.ListFilterViewHolder>() {
 

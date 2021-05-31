@@ -1,4 +1,4 @@
-package com.heavy.findhome.view.adapters
+package com.heavy.findhome.ui.view.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.heavy.findhome.R
 import com.heavy.findhome.databinding.ListSearchHomeBinding
-import com.heavy.findhome.model.RentAparment
+import com.heavy.findhome.data.model.RentAparment
 
 
 class ApartmentRecommendAdapter(private val listRentApartment: ArrayList<RentAparment>, private val ctx: Context) : RecyclerView.Adapter<ApartmentRecommendAdapter.ApartementRecommendHolder>() {

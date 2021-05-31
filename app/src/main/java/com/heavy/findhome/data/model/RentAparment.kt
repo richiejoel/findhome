@@ -1,4 +1,4 @@
-package com.heavy.findhome.model
+package com.heavy.findhome.data.model
 
 class RentAparment(pstNameAparment: String?, pstNameOwner: String?, pflAmount: Float?, pinNumberBedroom: Int?, pinNumberBathroom: Int?, pinNumberBell: Int?) {
 

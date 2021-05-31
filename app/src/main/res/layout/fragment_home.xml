@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context="com.heavy.findhome.view.fragments.HomeFragment">
+    tools:context=".ui.view.fragments.HomeFragment">
 
     <LinearLayout
         android:id="@+id/lytStack"

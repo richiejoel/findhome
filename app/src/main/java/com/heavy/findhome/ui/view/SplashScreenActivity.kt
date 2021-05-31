@@ -1,23 +1,29 @@
-package com.heavy.findhome.view
+package com.heavy.findhome.ui.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.WindowManager
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import com.google.firebase.auth.FirebaseUser
 import com.heavy.findhome.R
 import com.heavy.findhome.databinding.ActivitySplashScreenBinding
+import com.heavy.findhome.ui.viewModel.SplashScreenViewModel
 
 class SplashScreenActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashScreenBinding
 
+    private val splashScreenViewModel:SplashScreenViewModel by viewModels()
+    private var currentFirebaseUser: FirebaseUser? = null
+
     private val obHandler:Handler = Handler()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_splash_screen)
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -30,9 +36,18 @@ class SplashScreenActivity : AppCompatActivity() {
     }
 
     private val mRunnable = Runnable {
+        currentFirebaseUser = splashScreenViewModel.mCheckUserLoggedIn()
         if(!isFinishing){
-            startActivity(Intent(applicationContext, LoginActivity::class.java))
-            finish()
+            if(currentFirebaseUser == null){
+                startActivity(Intent(applicationContext, LoginActivity::class.java))
+                finish()
+            } else {
+                currentFirebaseUser?.let {
+                    Log.i("AUTH", it.uid)
+                    startActivity(Intent(applicationContext, DashboardActivity::class.java))
+                    finish()
+                }
+            }
         }
     }
 

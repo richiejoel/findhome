@@ -1,4 +1,4 @@
-package com.heavy.findhome.view.fragments
+package com.heavy.findhome.ui.view.fragments
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -15,7 +15,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -37,7 +36,7 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 
-class UbicationFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener, GoogleMap.OnMapClickListener {
+class UbicationFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener, GoogleMap.OnMapClickListener, GoogleMap.OnMarkerDragListener, GoogleMap.OnMapLongClickListener {
 
     private var _binding: FragmentUbicationBinding? = null
     private val binding get() = _binding!!
@@ -85,6 +84,8 @@ class UbicationFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMyLocation
         mEnableLocation()
 
         map.setOnMapClickListener(this)
+        map.setOnMarkerDragListener(this)
+        map.setOnMapLongClickListener(this)
 
 
     }
@@ -103,6 +104,7 @@ class UbicationFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMyLocation
         val coordinates3 = LatLng(37.401762, -122.085803)
         val marker3 = MarkerOptions().position(coordinates3).title("Crash!!")
             .icon(BitmapDescriptorFactory.fromBitmap(getMarkerBitmapFromView()))
+            .draggable(true)
 
         map.addMarker(marker)
         map.addMarker(marker2)
@@ -370,9 +372,27 @@ class UbicationFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMyLocation
     }
 
     override fun onMapClick(position: LatLng?) {
-        val markerAdd = MarkerOptions()?.position(position!!).title("Crash!!")
+        val markerAdd = MarkerOptions()?.position(position!!).draggable(true).title("Crash!!")
             .icon(BitmapDescriptorFactory.fromBitmap(getMarkerBitmapFromView()))
+            .draggable(true)
 
         map?.addMarker(markerAdd)
+    }
+
+    override fun onMarkerDragStart(p0: Marker?) {
+
+    }
+
+    override fun onMarkerDrag(p0: Marker?) {
+
+
+    }
+
+    override fun onMarkerDragEnd(marker: Marker?) {
+        //map?.animateCamera(CameraUpdateFactory.newLatLng(marker?.getPosition()));
+    }
+
+    override fun onMapLongClick(p0: LatLng?) {
+
     }
 }

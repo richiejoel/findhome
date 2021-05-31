@@ -1,3 +1,5 @@
+
+
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
@@ -37,17 +39,18 @@ android {
     }
 }
 
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'kotlin-kapt'
+
 dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.navigation:navigation-fragment:2.2.2'
     implementation 'androidx.navigation:navigation-ui:2.2.2'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -60,7 +63,16 @@ dependencies {
 
     implementation 'androidx.core:core:1.5.0-alpha04'
 
-    //lottie
+    //MVVM
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation "androidx.fragment:fragment-ktx:1.3.2"
+    implementation "androidx.activity:activity-ktx:1.2.2"
+
+    // Material Design
+    implementation 'com.google.android.material:material:1.2.1'
+
+    //Lottie
     implementation 'com.airbnb.android:lottie:3.6.0'
 
     //Circle Image
@@ -68,4 +80,33 @@ dependencies {
 
     //Rating Bar Custom
     implementation 'com.github.ome450901:SimpleRatingBar:1.5.1'
+
+    //Firebase
+    implementation platform('com.google.firebase:firebase-bom:28.0.1')
+    implementation "com.google.firebase:firebase-core:17.2.0"
+
+    //Firebase Auth
+    implementation "com.google.firebase:firebase-auth:19.1.0"
+
+    //Firebase Firestore
+    implementation "com.google.firebase:firebase-firestore:21.1.1"
+    implementation "com.google.android.gms:play-services-auth:17.0.0"
+
+    // Firebase Storage KTX
+    implementation 'com.google.firebase:firebase-storage-ktx:19.2.0'
+
+    // Firebase Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1'
+
+    //Analytics
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
+
+    // Coroutine Lifecycle Scopes
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
+
 }

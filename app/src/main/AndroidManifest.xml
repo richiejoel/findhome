@@ -11,12 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FindHome">
+        <activity android:name=".ui.view.RegisterActivity"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".view.SplashScreenActivity">
+        <activity android:name=".ui.view.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,9 +25,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.DashboardActivity"
+            android:name=".ui.view.DashboardActivity"
             android:label="@string/title_activity_dashboard" />
-        <activity android:name=".view.LoginActivity">
+        <activity android:name=".ui.view.LoginActivity">
 
             <!--
             <intent-filter>

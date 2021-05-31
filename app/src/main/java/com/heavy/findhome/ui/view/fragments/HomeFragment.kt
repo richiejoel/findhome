@@ -1,4 +1,4 @@
-package com.heavy.findhome.view.fragments
+package com.heavy.findhome.ui.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,19 +7,27 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.heavy.findhome.R
 import com.heavy.findhome.databinding.FragmentHomeBinding
-import com.heavy.findhome.model.ListFilterItem
-import com.heavy.findhome.model.RentAparment
-import com.heavy.findhome.view.adapters.ApartmentRecommendAdapter
-import com.heavy.findhome.view.adapters.ListFilterAdapter
+import com.heavy.findhome.data.model.ListFilterItem
+import com.heavy.findhome.data.model.RentAparment
+import com.heavy.findhome.ui.view.adapters.ApartmentRecommendAdapter
+import com.heavy.findhome.ui.view.adapters.ListFilterAdapter
+import com.heavy.findhome.ui.viewModel.LoginViewModel
+import com.heavy.findhome.ui.viewModel.RegisterViewModel
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null;
     private val binding get() = _binding!!
+
+    private val loginViewModel:LoginViewModel by viewModels()
+    private val registerViewModel:RegisterViewModel by viewModels()
 
     private lateinit var listFilter: ArrayList<ListFilterItem>
     private lateinit var listApartementRecommended: ArrayList<RentAparment>
@@ -45,6 +53,21 @@ class HomeFragment : Fragment() {
         mLoadDataListFilter()
         mLoadRecycler()
         mLoadPromoApartments()
+
+        loginViewModel.currentUser.observe(requireActivity(), Observer {
+            binding.txtUsername.text = it.name
+        })
+
+        registerViewModel.currentUser.observe(requireActivity(), Observer {
+            binding.txtUsername.text = it.name
+        })
+
+        loginViewModel.snackBar.observe(requireActivity(), Observer{
+            it?.let {
+                Snackbar.make(binding.root, it!!, Snackbar.LENGTH_LONG).show()
+                loginViewModel.onSnackBarShown()
+            }
+        })
 
         return view
     }

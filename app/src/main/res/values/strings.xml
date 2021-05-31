@@ -3,6 +3,7 @@
 
     <!-- Common -->
     <string name="ui_required">Required</string>
+    <string name="request_cancelled">Operation cancelled</string>
 
     <!-- Splash -->
     <string name="splash_title">FindHome</string>
@@ -16,25 +17,36 @@
     <string name="login_btn">LOGIN</string>
     <string name="login_create_account">Create new account</string>
     <string name="login_forgot_password">Forgot password?</string>
+    <string name="login_successful">Login Successful</string>
 
+    <!-- Register  -->
+    <string name="register_title">FindHome</string>
+    <string name="register_txt_welcome">Create User</string>
+    <string name="register_txt_description">Create user for enjoy findhome</string>
+    <string name="register_edt_email">Email</string>
+    <string name="register_edt_password">Password</string>
+    <string name="register_btn">CREATE USER</string>
+    <string name="register_have_account">Do you have a account?</string>
+    <string name="register_forgot_password">Forgot password?</string>
+    <string name="register_successful">Register Successful</string>
 
+    <!-- DashBoard -->
     <string name="title_activity_dashboard">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_chat">Chat</string>
 
-
     <!-- Home -->
     <string name="home_txt_city">Los Angeles, CA</string>
     <string name="home_txt_username">Hello, Joel</string>
     <string name="home_txt_subtitle">Start looking for your house</string>
     <string name="home_edt_search">What are you looking for?</string>
+
     <!-- Filter -->
     <string name="home_filter_home">Home</string>
     <string name="home_filter_condominium">Condominium</string>
     <string name="home_filter_keys">Keys</string>
     <string name="home_filter_percent">Percent</string>
-
 
 </resources>

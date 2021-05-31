@@ -9,7 +9,7 @@
     You can also add your credentials to an existing key, using these values:
 
     Package name:
-    com.heavy.findhome.view.fragments
+    com.heavy.findhome.ui.view.fragments
 
     SHA-1 certificate fingerprint:
     4C:89:DF:2F:8D:4D:8A:A7:18:7F:C5:FA:89:77:45:42:86:1B:99:C3
