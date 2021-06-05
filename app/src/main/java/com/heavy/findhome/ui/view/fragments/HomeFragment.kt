@@ -1,12 +1,15 @@
 package com.heavy.findhome.ui.view.fragments
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,18 +19,21 @@ import com.heavy.findhome.R
 import com.heavy.findhome.databinding.FragmentHomeBinding
 import com.heavy.findhome.data.model.ListFilterItem
 import com.heavy.findhome.data.model.RentAparment
+import com.heavy.findhome.ui.view.LoginActivity
 import com.heavy.findhome.ui.view.adapters.ApartmentRecommendAdapter
 import com.heavy.findhome.ui.view.adapters.ListFilterAdapter
+import com.heavy.findhome.ui.viewModel.DashboardViewModel
 import com.heavy.findhome.ui.viewModel.LoginViewModel
 import com.heavy.findhome.ui.viewModel.RegisterViewModel
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), View.OnClickListener {
 
     private var _binding: FragmentHomeBinding? = null;
     private val binding get() = _binding!!
 
-    private val loginViewModel:LoginViewModel by viewModels()
-    private val registerViewModel:RegisterViewModel by viewModels()
+    //private val loginViewModel:LoginViewModel by activityViewModels()
+    //private val registerViewModel:RegisterViewModel by viewModels()
+    private val dashboardViewModel:DashboardViewModel by activityViewModels()
 
     private lateinit var listFilter: ArrayList<ListFilterItem>
     private lateinit var listApartementRecommended: ArrayList<RentAparment>
@@ -54,22 +60,34 @@ class HomeFragment : Fragment() {
         mLoadRecycler()
         mLoadPromoApartments()
 
-        loginViewModel.currentUser.observe(requireActivity(), Observer {
-            binding.txtUsername.text = it.name
-        })
+        binding.settings.setOnClickListener(this)
 
-        registerViewModel.currentUser.observe(requireActivity(), Observer {
-            binding.txtUsername.text = it.name
-        })
 
-        loginViewModel.snackBar.observe(requireActivity(), Observer{
+        /*loginViewModel.currentUser.observe(requireActivity(), Observer {
+            binding.txtUsername.text = it?.email
+        })*/
+
+
+        /*registerViewModel.currentUser.observe(requireActivity(), Observer {
+            binding.txtUsername.text = it.name
+        })*/
+
+        /*loginViewModel.snackBar.observe(viewLifecycleOwner, Observer{
             it?.let {
                 Snackbar.make(binding.root, it!!, Snackbar.LENGTH_LONG).show()
                 loginViewModel.onSnackBarShown()
             }
-        })
+        })*/
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        /*loginViewModel.currentUser.observe(requireActivity(), Observer {
+            binding.txtUsername.text = it?.email
+        })*/
     }
 
     private fun mChangeColorStatusBar() {
@@ -105,7 +123,6 @@ class HomeFragment : Fragment() {
         obRecyclerView.adapter = obAdapter
 
 
-
     }
 
     private fun mLoadPromoApartments() {
@@ -123,4 +140,27 @@ class HomeFragment : Fragment() {
         //Hide bottom navigation bar moves up on keyboard
         activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
     }
+
+    override fun onClick(view: View?) {
+        when(view?.id){
+            binding.settings.id -> mLogOutUser()
+            else -> {
+                Log.i("ERROR", "Error not controlled")
+            }
+        }
+    }
+
+    private fun mLogOutUser(){
+        dashboardViewModel.mLogOutUser()
+        mStartLoginActivity()
+    }
+
+    private fun mStartLoginActivity(){
+        val intent = Intent(requireContext(), LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+        activity?.startActivity(intent)
+        activity?.finish()
+    }
+
+
 }

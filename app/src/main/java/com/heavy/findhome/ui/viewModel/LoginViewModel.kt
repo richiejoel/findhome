@@ -39,7 +39,7 @@ class LoginViewModel: ViewModel() {
                     is Result.Success -> {
                         obResultSignIn.data?.let {
                             _snackBar.value = activity.getString(R.string.login_successful)
-                            mGetUserFromFirestore(it.uid, activity)
+                            mGetUserFromFirestore(it.email!!, activity)
                         }
 
                     }
@@ -59,7 +59,7 @@ class LoginViewModel: ViewModel() {
         when (user){
             is Result.Success -> {
                 val _user = user.data
-                Log.d(TAG, "${user.data}")
+                Log.d("Goku2", "${user.data}")
                 _currentUser.value = _user
                 mStartActivityDashboard(activity = activity)
             }

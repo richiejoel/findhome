@@ -13,5 +13,6 @@ interface IAuthService {
     suspend fun mGetUserFromFirestore(userId: String): Result<User>?
     suspend fun mAddUserFirestore(user:User): Result<Void?>
     suspend fun mCheckUserLoggedIn(): FirebaseUser?
+    suspend fun mLogOutUser()
 
 }

@@ -111,4 +111,8 @@ class AuthService : IAuthService {
         }
     }
 
+    override suspend fun mLogOutUser(){
+        firebaseAuth.signOut()
+    }
+
 }

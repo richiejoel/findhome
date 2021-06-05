@@ -30,4 +30,8 @@ class AuthRepository {
         return obService.mGetUserFromFirestore(userId)
     }
 
+    suspend fun mLogOutUser(){
+        obService.mLogOutUser()
+    }
+
 }

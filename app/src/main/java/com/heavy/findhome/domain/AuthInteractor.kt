@@ -39,4 +39,9 @@ class AuthInteractor {
     suspend fun mGetUserFromFirestore(userId: String): Result<User>? {
         return obRepository.mGetUserFromFirestore(userId)
     }
+
+    suspend fun mLogOutUser(){
+        obRepository.mLogOutUser()
+    }
+
 }
