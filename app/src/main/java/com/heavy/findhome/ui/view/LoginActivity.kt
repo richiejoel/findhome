@@ -28,10 +28,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         binding.btnLogin.setOnClickListener(this)
         binding.txtLoginAccount.setOnClickListener(this)
         binding.sesionFacebook.setOnClickListener(this)
+        binding.sesionGoogle.setOnClickListener(this)
 
         //Hide action bar
         supportActionBar?.hide()
-
+        //project-828857439006
         loginViewModel.snackBar.observe(this, Observer {
             it?.let {
                 Snackbar.make(binding.root, it!!, Snackbar.LENGTH_LONG).show()
@@ -46,6 +47,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             binding.btnLogin.id -> mLoginWithUserAndPassword()
             binding.txtLoginAccount.id -> mStartRegisterActivity()
             binding.sesionFacebook.id -> mLoginWithFacebook()
+            binding.sesionGoogle.id -> mLoginWithGoogle()
             else -> {
                 Log.i("ERROR", "Error not controlled")
             }
@@ -63,7 +65,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun mLoginWithFacebook(){
-        loginViewModel.signInWithFacebook(this)
+        loginViewModel.mSignInWithFacebook(this)
+    }
+
+    private fun mLoginWithGoogle(){
+        loginViewModel.mSignInWithGoogle(this)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
