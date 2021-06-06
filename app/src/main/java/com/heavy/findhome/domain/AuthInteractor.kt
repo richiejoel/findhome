@@ -1,6 +1,9 @@
 package com.heavy.findhome.domain
 
+
 import android.content.Context
+import com.google.firebase.auth.AuthCredential
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseUser
 import com.heavy.findhome.data.model.entity.User
 import com.heavy.findhome.data.repository.AuthRepository
@@ -40,8 +43,16 @@ class AuthInteractor {
         return obRepository.mGetUserFromFirestore(userId)
     }
 
-    suspend fun mLogOutUser(){
-        obRepository.mLogOutUser()
+    suspend fun mLogOutUser(provider: String?){
+        obRepository.mLogOutUser(provider)
+    }
+
+    suspend fun mSignInWithCredential(authCredential: AuthCredential): Result<AuthResult?> {
+         return obRepository.mSignInWithCredential(authCredential)
+    }
+
+    suspend fun mAddUserFirestore(user: User): Result<Void?>{
+        return  obRepository.mAddUserFirestore(user)
     }
 
 }

@@ -2,9 +2,11 @@ package com.heavy.findhome.ui.view
 
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.util.Base64
 import android.util.Log
 import android.view.WindowManager
 import androidx.activity.viewModels
@@ -19,6 +21,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 
 class SplashScreenActivity : AppCompatActivity() {
 
@@ -39,6 +43,7 @@ class SplashScreenActivity : AppCompatActivity() {
         setContentView(binding.root)
         //Hide action bar
         supportActionBar?.hide()
+        printKeyHash()
 
         coroutineScope.launch {
             delay(3_000)
@@ -68,6 +73,22 @@ class SplashScreenActivity : AppCompatActivity() {
 
     private fun mChangeColorStatusBar(){
         window?.statusBarColor = ContextCompat.getColor(applicationContext, R.color.colorWhite)
+    }
+
+    private fun printKeyHash() {
+        try {
+            val info = packageManager.getPackageInfo("com.heavy.findhome", PackageManager.GET_SIGNATURES)
+            for(signature in info.signatures) {
+                val messageDigest = MessageDigest.getInstance("SHA")
+                messageDigest.update(signature.toByteArray())
+                Log.i("printKeyHash", Base64.encodeToString(messageDigest.digest(), Base64.DEFAULT))
+            }
+        } catch (exception: PackageManager.NameNotFoundException) {
+            Log.e("ERROR", exception.toString() )
+        }
+        catch (exception: NoSuchAlgorithmException) {
+            Log.e("ERROR", exception.toString() )
+        }
     }
 
     /*private val mRunnable = Runnable {

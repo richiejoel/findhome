@@ -2,8 +2,12 @@ package com.heavy.findhome.data.service.auth
 
 import android.content.Context
 import android.util.Log
+import com.facebook.login.LoginManager
+import com.google.firebase.auth.AuthCredential
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseUser
 import com.heavy.findhome.core.FirebaseHelper
+import com.heavy.findhome.data.model.entity.ProviderType
 import com.heavy.findhome.data.model.entity.User
 import com.heavy.findhome.utils.Constants.USER_COLLECTION
 import com.heavy.findhome.utils.extension.await
@@ -111,8 +115,17 @@ class AuthService : IAuthService {
         }
     }
 
-    override suspend fun mLogOutUser(){
+    override suspend fun mLogOutUser(provider: String?){
+        if(provider.equals(ProviderType.FACEBOOK.name)){
+            LoginManager.getInstance().logOut()
+        }
         firebaseAuth.signOut()
+    }
+
+    override suspend fun mSignInWithCredential(authCredential: AuthCredential): Result<AuthResult?> {
+        return firebaseAuth
+            .signInWithCredential(authCredential)
+            .await()
     }
 
 }

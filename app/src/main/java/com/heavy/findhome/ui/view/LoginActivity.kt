@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.annotation.CallSuper
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.heavy.findhome.databinding.ActivityLoginBinding
@@ -26,6 +27,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.btnLogin.setOnClickListener(this)
         binding.txtLoginAccount.setOnClickListener(this)
+        binding.sesionFacebook.setOnClickListener(this)
+
         //Hide action bar
         supportActionBar?.hide()
 
@@ -42,6 +45,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         when(view?.id){
             binding.btnLogin.id -> mLoginWithUserAndPassword()
             binding.txtLoginAccount.id -> mStartRegisterActivity()
+            binding.sesionFacebook.id -> mLoginWithFacebook()
             else -> {
                 Log.i("ERROR", "Error not controlled")
             }
@@ -56,6 +60,15 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             loginViewModel.mSignInUserWithEmailAndPassword(user, this)
         }
 
+    }
+
+    private fun mLoginWithFacebook(){
+        loginViewModel.signInWithFacebook(this)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        loginViewModel.onActivityResult(requestCode, resultCode, data, this)
     }
 
     private fun mStartRegisterActivity(){

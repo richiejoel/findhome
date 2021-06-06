@@ -87,6 +87,11 @@ dependencies {
 
     //Firebase Auth
     implementation "com.google.firebase:firebase-auth:19.1.0"
+    implementation 'com.google.firebase:firebase-auth-ktx'
+
+    //Facebook
+    //implementation 'com.facebook.android:facebook-login:[8.1)'
+    implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
 
     //Firebase Firestore
     implementation "com.google.firebase:firebase-firestore:21.1.1"
@@ -98,7 +103,7 @@ dependencies {
     // Firebase Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1'
 
-    //Analytics
+    //Google Analytics
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
     // Coroutines

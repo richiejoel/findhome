@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">FindHome</string>
+    <!-- FB -->
+    <string name="facebook_app_id">1122480794929107</string>
+    <string name="fb_login_protocol_scheme">fb1122480794929107</string>
 
     <!-- Common -->
     <string name="ui_required">Required</string>
@@ -48,5 +51,7 @@
     <string name="home_filter_condominium">Condominium</string>
     <string name="home_filter_keys">Keys</string>
     <string name="home_filter_percent">Percent</string>
+
+
 
 </resources>

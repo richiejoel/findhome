@@ -9,9 +9,9 @@ class DashboardViewModel: ViewModel() {
 
     val obInteractor: AuthInteractor = AuthInteractor()
 
-    fun mLogOutUser(){
+    fun mLogOutUser(provider: String?){
         viewModelScope.launch {
-            obInteractor.mLogOutUser()
+            obInteractor.mLogOutUser(provider)
         }
     }
 }

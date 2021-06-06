@@ -15,6 +15,9 @@
     <color name="colorWhite">#FFFFFFFF</color>
     <color name="colorHintTxt">#7E7D7D</color>
 
+    <color name="color_facebook">#1877F2</color>
+
+
     <!-- Background all aplication -->
     <color name="colorBackground">#F8FBFF</color>
     <color name="colorMap">#13497B</color>

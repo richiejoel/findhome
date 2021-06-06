@@ -143,15 +143,15 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(view: View?) {
         when(view?.id){
-            binding.settings.id -> mLogOutUser()
+            binding.settings.id -> mLogOutUser("EMAIL")
             else -> {
                 Log.i("ERROR", "Error not controlled")
             }
         }
     }
 
-    private fun mLogOutUser(){
-        dashboardViewModel.mLogOutUser()
+    private fun mLogOutUser(provider: String?){
+        dashboardViewModel.mLogOutUser(provider)
         mStartLoginActivity()
     }
 

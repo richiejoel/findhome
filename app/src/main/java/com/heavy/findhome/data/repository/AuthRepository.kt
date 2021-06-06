@@ -1,10 +1,13 @@
 package com.heavy.findhome.data.repository
 
 import android.content.Context
+import com.google.firebase.auth.AuthCredential
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseUser
 import com.heavy.findhome.data.model.entity.User
 import com.heavy.findhome.data.service.auth.AuthService
 import com.heavy.findhome.utils.Result
+import com.heavy.findhome.utils.extension.await
 
 class AuthRepository {
 
@@ -30,8 +33,12 @@ class AuthRepository {
         return obService.mGetUserFromFirestore(userId)
     }
 
-    suspend fun mLogOutUser(){
-        obService.mLogOutUser()
+    suspend fun mLogOutUser(provider: String?){
+        obService.mLogOutUser(provider)
+    }
+
+    suspend fun mSignInWithCredential(authCredential: AuthCredential): Result<AuthResult?> {
+        return obService.mSignInWithCredential(authCredential)
     }
 
 }

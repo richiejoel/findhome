@@ -122,7 +122,7 @@
                         android:paddingEnd="20dp"
                         android:layout_marginTop="20dp"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        app:counterMaxLength="20"
+                        app:counterMaxLength="50"
                         app:counterEnabled="true"
                         app:helperText="@string/ui_required"
                         app:endIconMode="custom"
@@ -152,7 +152,7 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         app:endIconMode="password_toggle"
                         app:helperText="@string/ui_required"
-                        app:counterMaxLength="20"
+                        app:counterMaxLength="50"
                         app:counterEnabled="true"
                         >
                         <com.google.android.material.textfield.TextInputEditText
@@ -182,7 +182,43 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         />
 
-                    <com.google.android.gms.common.SignInButton
+                    <LinearLayout
+                        android:id="@+id/lytSocialMedia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_centerInParent="true"
+                        android:paddingTop="10dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+                        >
+
+                        <ImageButton
+                            android:id="@+id/sesionFacebook"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/border_face"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/facebook"
+                            />
+
+                        <ImageButton
+                            android:id="@+id/sesionGoogle"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="20dp"
+                            android:background="@drawable/border_google"
+                            android:elevation="10dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/google"
+                            />
+                    </LinearLayout>
+
+                    <!--<com.google.android.gms.common.SignInButton
                         android:id="@+id/google_sign_in_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -192,7 +228,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/btnLogin"
-                        app:buttonSize="wide"/>
+                        app:buttonSize="wide"/>-->
 
                     <LinearLayout
                         android:id="@+id/layoutHorizontal"
@@ -202,7 +238,7 @@
                         android:layout_marginTop="20dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/google_sign_in_button"
+                        app:layout_constraintTop_toBottomOf="@+id/lytSocialMedia"
                         android:paddingStart="20dp"
                         android:paddingEnd="20dp"
                         >

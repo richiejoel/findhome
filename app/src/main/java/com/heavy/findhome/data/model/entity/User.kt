@@ -1,6 +1,7 @@
 package com.heavy.findhome.data.model.entity
 
 data class User(
+    var uid: String = "",
     var email: String = "",
     var password: String = "",
     var username: String = "",

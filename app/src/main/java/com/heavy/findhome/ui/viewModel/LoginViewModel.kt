@@ -7,6 +7,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
+import com.google.firebase.auth.FacebookAuthProvider
+import com.google.firebase.auth.FirebaseUser
 import com.heavy.findhome.R
 import com.heavy.findhome.data.model.entity.User
 import com.heavy.findhome.domain.AuthInteractor
@@ -14,12 +21,14 @@ import com.heavy.findhome.ui.view.DashboardActivity
 import com.heavy.findhome.utils.Result
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.util.*
 
 class LoginViewModel: ViewModel() {
 
     //val user = MutableLiveData<User>()
 
     private val TAG = "LOGIN"
+    private var callbackManager: CallbackManager? = null
 
     private val _currentUser = MutableLiveData<User>(User())
     val currentUser: LiveData<User>
@@ -88,6 +97,79 @@ class LoginViewModel: ViewModel() {
                 Log.i("","")
             }
         }
+    }
+
+    fun signInWithFacebook(activity: Activity) {
+        launchDataLoad {
+            callbackManager = CallbackManager.Factory.create()
+
+            LoginManager.getInstance()
+                .logInWithReadPermissions(
+                    activity,
+                    Arrays.asList("email", "public_profile"))
+
+            LoginManager.getInstance().registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+                override fun onSuccess(result: LoginResult?) {
+                    val credential = FacebookAuthProvider.getCredential(result?.accessToken?.token!!)
+                    viewModelScope.launch {
+                        when(val result = obInteractor.mSignInWithCredential(credential)) {
+                            is Result.Success -> {
+                                Log.d(TAG, "Result.Success - ${result.data?.user?.uid}")
+                                result.data?.user?.let { user ->
+                                    val _user = user.displayName?.let {
+                                        createUserObject(
+                                            user,
+                                            it
+                                        )
+                                    }
+                                    _user?.let {
+                                        obInteractor.mAddUserFirestore(_user)
+                                    }
+                                }
+                                _snackBar.value = activity.getString(R.string.login_successful)
+                                mStartActivityDashboard(activity = activity)
+                            }
+                            is Result.Error -> {
+                                Log.e(TAG, "Result.Error - ${result.exception.message}")
+                                //_toast.value = result.exception.message
+                            }
+                            is Result.Canceled -> {
+                                Log.d(TAG, "Result.Canceled")
+                                //_toast.value = activity.applicationContext.getString(R.string.request_canceled)
+                            }
+                        }
+                    }
+                }
+
+                override fun onError(error: FacebookException?) {
+                    Log.e(TAG, "Result.Error - ${error?.message}")
+                    //_toast.value = error?.message
+                }
+
+                override fun onCancel() {
+                    Log.d(TAG, "Result.Canceled")
+                    //_toast.value = activity.applicationContext.getString(R.string.request_canceled)
+                }
+            })
+        }
+    }
+
+
+    fun createUserObject(firebaseUser: FirebaseUser, name: String, profilePicture: String = ""): User {
+        val currentUser = User(
+            email =  firebaseUser.uid,
+            name = name,
+            profilePhoto = profilePicture
+        )
+
+        return currentUser
+    }
+
+    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?, activity: Activity) {
+        callbackManager?.onActivityResult(
+            requestCode,
+            resultCode,
+            data)
     }
 
     private fun mStartActivityDashboard(activity: Activity) {
