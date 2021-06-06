@@ -141,11 +141,11 @@ class LoginViewModel: ViewModel() {
                             }
                             is Result.Error -> {
                                 Log.e(TAG, "Result.Error - ${result.exception.message}")
-                                //_toast.value = result.exception.message
+                                _snackBar.value = result.exception.message
                             }
                             is Result.Canceled -> {
                                 Log.d(TAG, "Result.Canceled")
-                                //_toast.value = activity.applicationContext.getString(R.string.request_canceled)
+                                _snackBar.value = result.exception?.message
                             }
                         }
                     }
@@ -153,12 +153,12 @@ class LoginViewModel: ViewModel() {
 
                 override fun onError(error: FacebookException?) {
                     Log.e(TAG, "Result.Error - ${error?.message}")
-                    //_toast.value = error?.message
+                    _snackBar.value = error?.message
                 }
 
                 override fun onCancel() {
                     Log.d(TAG, "Result.Canceled")
-                    //_toast.value = activity.applicationContext.getString(R.string.request_canceled)
+                    _snackBar.value = activity.getString(R.string.request_cancelled)
                 }
             })
         }
@@ -236,7 +236,6 @@ class LoginViewModel: ViewModel() {
             mHandleSignInResult(task, activity)
         }
     }
-
 
     private fun mStartActivityDashboard(activity: Activity) {
         val goDashboard: Intent = Intent(activity, DashboardActivity::class.java)
